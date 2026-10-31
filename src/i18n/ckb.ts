@@ -1,8 +1,8 @@
 import type { TranslationDict } from './en'
 
 export const ckb: TranslationDict = {
-  'app.name': 'دوکان فۆن',
-  'app.tagline': 'سیستەمی دوکان',
+  'app.name': 'دوکان مۆبایل',
+  'app.tagline': 'سیستەمی مۆبایل',
 
   'common.save': 'پاشەکەوتکردن',
   'common.cancel': 'پاشگەزبوونەوە',

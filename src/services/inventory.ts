@@ -1,4 +1,5 @@
 import { db } from '../db/db'
+import { generateUniqueShortId } from './barcode'
 import type {
   AuditLog,
   Condition,
@@ -96,7 +97,7 @@ export async function addUnit(input: AddUnitInput, user: SessionUser): Promise<I
   if (input.purchaseCost < 0) throw new ShopError('cost_invalid', 'Purchase cost cannot be negative')
 
   const unitId = uuid()
-  const shortId = input.shortId?.trim().toUpperCase() || (await import('./barcode')).generateUniqueShortId()
+  const shortId = input.shortId?.trim().toUpperCase() || (await generateUniqueShortId())
   const now = new Date().toISOString()
 
   return db.transaction(

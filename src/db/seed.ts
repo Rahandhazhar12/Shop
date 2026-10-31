@@ -427,6 +427,7 @@ export async function seedDatabase(force = false): Promise<void> {
     ...input,
     region: 'Global',
     network: 'Dual SIM',
+    imei1: input.imei1 ?? '',
     imei2: input.imei2 ?? '',
     serial: input.serial ?? '',
     supplier: 'Demo supplier',

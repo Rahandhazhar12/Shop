@@ -1,6 +1,6 @@
 export const en = {
-  'app.name': 'Dukan Phone',
-  'app.tagline': 'Shop system',
+  'app.name': 'Dukan Mobile',
+  'app.tagline': 'Mobile shop system',
 
   'common.save': 'Save',
   'common.cancel': 'Cancel',

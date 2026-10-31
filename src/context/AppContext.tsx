@@ -11,6 +11,7 @@ import { useLiveQuery } from 'dexie-react-hooks'
 import { db } from '../db/db'
 import type { Session, SessionUser, Settings } from '../types'
 import { uuid } from '../services/id'
+import { seedDatabase } from '../db/seed'
 
 const SESSION_KEY = 'dukan-session'
 
@@ -55,6 +56,12 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const [session, setSession] = useState<Session | null>(readSession)
   const [online, setOnline] = useState(() => (typeof navigator === 'undefined' ? true : navigator.onLine))
   const [toasts, setToasts] = useState<Toast[]>([])
+
+  useEffect(() => {
+    if (!settings) {
+      void seedDatabase().catch(() => undefined)
+    }
+  }, [settings])
 
   useEffect(() => {
     const goOnline = () => setOnline(true)
