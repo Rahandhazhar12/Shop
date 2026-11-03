@@ -267,7 +267,7 @@ export default function AddStockPage() {
 
   if (savedUnitId) {
     return (
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+      <div className="add-stock-page" style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
         <PageHeader title={t('addStock.savedTitle')} />
         <Card>
           <div className="section-header" style={{ marginTop: 0 }}>
@@ -299,7 +299,7 @@ export default function AddStockPage() {
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+    <div className="add-stock-page" style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
       <PageHeader
         title={t('addStock.title')}
         subtitle={t('addStock.subtitle')}
@@ -333,7 +333,7 @@ export default function AddStockPage() {
           {!brand ? (
             <>
               {errors.modelId ? <p className="field-message">{errors.modelId}</p> : null}
-              <div className="grid grid-3">
+              <div className="grid grid-3 add-stock-brands">
                 {activeBrands.map((b) => (
                   <button key={b.id} type="button" className="card pick-card" onClick={() => pickBrand(b.id)}>
                     <span className="pick-swatch" style={{ background: b.color }} />
@@ -357,7 +357,7 @@ export default function AddStockPage() {
                 ariaLabel={t('addStock.searchModels')}
               />
               {errors.modelId && !modelId ? <p className="field-message">{errors.modelId}</p> : null}
-              <div className="grid grid-3">
+              <div className="grid grid-3 add-stock-models">
                 {filteredModels.map((m) => (
                   <button key={m.id} type="button" className={`card model-card ${m.id === modelId ? 'model-card-active' : ''}`} onClick={() => pickModel(m.id)}>
                     <span className="model-card-img">
@@ -381,7 +381,7 @@ export default function AddStockPage() {
                       </div>
                     </div>
                   </div>
-                  <div className="list">
+                  <div className="list add-stock-variants">
                     {modelVariants.map((v) => (
                       <label key={v.id} className="list-row" style={{ cursor: 'pointer' }}>
                         <input type="radio" name="variant" checked={variantId === v.id} onChange={() => pickVariant(v.id)} />
@@ -522,7 +522,7 @@ export default function AddStockPage() {
             </div>
           </div>
           <Field label={t('addStock.barcode')} required error={errors.barcode} hint={t('addStock.barcodeHint')}>
-            <div style={{ display: 'flex', gap: 10 }}>
+            <div className="add-stock-barcode-input" style={{ display: 'flex', gap: 10 }}>
               <input type="text" value={form.barcode} onChange={(e) => set('barcode', e.target.value)} placeholder="SHP-…" />
               <Button type="button" variant="secondary" icon="refresh" onClick={() => void generateBarcode()}>
                 {t('addStock.generateBarcode')}
@@ -562,7 +562,7 @@ export default function AddStockPage() {
             </div>
           ) : null}
 
-          <div style={{ display: 'flex', gap: 10, justifyContent: 'flex-end', flexWrap: 'wrap' }}>
+          <div className="add-stock-actions" style={{ display: 'flex', gap: 10, justifyContent: 'flex-end', flexWrap: 'wrap' }}>
             <Button variant="secondary" onClick={() => setStep(2)}>
               {t('addStock.continue')}
             </Button>
